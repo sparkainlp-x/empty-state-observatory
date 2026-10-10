@@ -53,7 +53,7 @@ python -m pip install -r requirements-dev.txt -e .
 python -m pytest -q
 npm ci
 npm test
-python -m empty_state_observatory benchmark --trials 200 --steps 160 --out web/benchmark.json
+python scripts/build_web_benchmark.py --trials 200 --steps 160
 python -m empty_state_observatory export --seed ESO-032 --out synthetic-run.csv
 ```
 

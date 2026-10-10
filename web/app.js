@@ -1,4 +1,5 @@
-import { DEFAULT_STEPS, THRESHOLDS, firstAlert, frameMetrics, simulatePair } from "./simulator.js";
+import { DEFAULT_STEPS, firstAlert, frameMetrics, simulatePair } from "./simulator.js";
+import { BENCHMARK } from "./benchmark-data.js";
 
 const $ = (selector) => document.querySelector(selector);
 const seedInput = $("#seed-input");
@@ -84,16 +85,10 @@ function metricCard(title, summary, className) {
   return `<article class="metric-card ${className}"><h3>${title}</h3><div class="metric-values"><div><span>False alarms</span><strong>${formatPercent(summary.false_alarm_rate)}</strong></div><div><span>Detection</span><strong>${formatPercent(summary.detection_rate)}</strong></div><div><span>Median delay</span><strong>${delay}</strong></div><div><span>Misses</span><strong>${summary.misses}</strong></div></div></article>`;
 }
 
-async function loadBenchmark() {
-  try {
-    const response = await fetch("./benchmark.json", { cache: "no-store" });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
-    $("#benchmark-copy").textContent = `${data.label} · ${data.trials} seeded trials × ${data.steps_per_trial} steps · ${data.channel_count} explicitly mapped channels · false alarms are frame-level; detection and misses are trial-level.`;
-    metricsGrid.innerHTML = metricCard("OES-32-INSPIRED MONITOR", data.oes32_inspired_monitor, "monitor") + metricCard("SCALAR RMS BASELINE", data.scalar_rms_baseline, "baseline");
-  } catch {
-    $("#benchmark-copy").textContent = "Serve this page over HTTP to load the checked-in, reproducible synthetic benchmark report.";
-  }
+function loadBenchmark() {
+  const data = BENCHMARK;
+  $("#benchmark-copy").textContent = `${data.label} · ${data.trials} seeded trials × ${data.steps_per_trial} steps · ${data.channel_count} explicitly mapped channels · false alarms are frame-level; detection and misses are trial-level.`;
+  metricsGrid.innerHTML = metricCard("OES-32-INSPIRED MONITOR", data.oes32_inspired_monitor, "monitor") + metricCard("SCALAR RMS BASELINE", data.scalar_rms_baseline, "baseline");
 }
 
 function reveal(guess) {

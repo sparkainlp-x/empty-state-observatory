@@ -3,12 +3,20 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import { readFileSync } from "node:fs";
+import { BENCHMARK } from "../web/benchmark-data.js";
 import {
   ALPHA, CHANNEL_COUNT, STATE_COUNT, STATE_TO_CHANNEL, cascadeStep, edgeGradient,
   frameMetrics, hashSeed, simulatePair, vertexLaplacian,
 } from "../web/simulator.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+
+test("the bundled browser metrics are byte-for-byte equivalent to the checked-in synthetic JSON", () => {
+  const report = JSON.parse(readFileSync(new URL("../web/benchmark.json", import.meta.url), "utf8"));
+  assert.deepEqual(BENCHMARK, report);
+  assert.equal(BENCHMARK.label, "SYNTHETIC");
+});
 
 test("the browser model declares an explicit one-to-one 32-channel map", () => {
   assert.equal(STATE_COUNT, 32);
