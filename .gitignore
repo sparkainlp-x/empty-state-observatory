@@ -1,0 +1,12 @@
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.egg-info/
+.venv/
+node_modules/
+.wrangler/
+wrangler.toml
+.env
+.env.*
+*.log
+synthetic-run.csv

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b13">
+  <meta name="description" content="A synthetic paired-run guessing game for an abstract 32-channel membrane simulation.">
+  <title>Empty-State Observatory — Can you spot the disturbance?</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="masthead">
+      <a class="brand" href="#top" aria-label="Empty-State Observatory home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>EMPTY-STATE <b>OBSERVATORY</b></span>
+      </a>
+      <div class="synthetic-badge"><span class="badge-dot"></span> SYNTHETIC · SOFTWARE ONLY</div>
+    </header>
+
+    <main id="top">
+      <section class="intro">
+        <div class="eyebrow"><span>01</span> PAIRED-RUN OBSERVATION GAME</div>
+        <h1>Can you spot<br><em>the disturbance?</em></h1>
+        <p class="lede">Two runs. One seeded beginning. One hidden synthetic pulse. Study the evolving 32-channel membrane, then make your call.</p>
+        <div class="model-note"><span class="model-glyph" aria-hidden="true">32</span><span><strong>Abstract membrane</strong><small>All-zero start · stable ring Laplacian · arbitrary simulation steps</small></span></div>
+      </section>
+
+      <section class="controls" aria-label="Replay controls">
+        <label for="seed-input">REPLAY SEED</label>
+        <div class="seed-entry">
+          <input id="seed-input" type="text" maxlength="64" value="ESO-032" autocomplete="off" spellcheck="false" aria-describedby="seed-hint">
+          <button id="replay-button" class="button button-secondary" type="button">Replay seed <span aria-hidden="true">↻</span></button>
+          <button id="export-button" class="button button-quiet" type="button">Export CSV <span aria-hidden="true">↓</span></button>
+        </div>
+        <p id="seed-hint" class="control-hint">Same seed = same runs, event, and measurement noise. Try your own label.</p>
+      </section>
+
+      <section class="runs" aria-label="Compare the two seeded runs">
+        <article class="run-card" id="run-a-card">
+          <div class="run-head"><div><span class="run-kicker">OBSERVATION A</span><h2>Run A</h2></div><span class="run-state" id="run-a-status">AWAITING GUESS</span></div>
+          <p class="run-caption">32 channels <span>·</span> 160 steps <span>·</span> time-aligned scale</p>
+          <div class="plot-wrap"><canvas id="run-a-canvas" width="960" height="320" role="img" aria-label="Synthetic heatmap of Run A, with simulation step on the horizontal axis and channel on the vertical axis."></canvas></div>
+          <div class="axis"><span>STEP 0</span><span>TIME →</span><span>STEP 160</span></div>
+          <button class="guess-button" id="guess-a" type="button">This run was disturbed <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="run-card" id="run-b-card">
+          <div class="run-head"><div><span class="run-kicker">OBSERVATION B</span><h2>Run B</h2></div><span class="run-state" id="run-b-status">AWAITING GUESS</span></div>
+          <p class="run-caption">32 channels <span>·</span> 160 steps <span>·</span> time-aligned scale</p>
+          <div class="plot-wrap"><canvas id="run-b-canvas" width="960" height="320" role="img" aria-label="Synthetic heatmap of Run B, with simulation step on the horizontal axis and channel on the vertical axis."></canvas></div>
+          <div class="axis"><span>STEP 0</span><span>TIME →</span><span>STEP 160</span></div>
+          <button class="guess-button" id="guess-b" type="button">This run was disturbed <span aria-hidden="true">→</span></button>
+        </article>
+      </section>
+
+      <section class="reveal" id="reveal-panel" hidden aria-live="polite">
+        <div class="reveal-label"><span class="reveal-star" aria-hidden="true">✳</span> REVEAL</div>
+        <div class="reveal-grid">
+          <div><p class="eyebrow">YOUR READ</p><h2 id="guess-result">—</h2><p id="answer-copy" class="reveal-copy"></p></div>
+          <div class="event-facts">
+            <div><span>INJECTED AT</span><strong id="event-onset">—</strong></div>
+            <div><span>CHANNEL / STRENGTH</span><strong id="event-strength">—</strong></div>
+            <div><span>OBSERVER ALERT</span><strong id="event-alert">—</strong></div>
+          </div>
+        </div>
+        <p class="reveal-footnote">Monitor scores are synthetic consistency checks against the time-aligned clean reference; they are not physical detections.</p>
+      </section>
+
+      <section class="method-grid" aria-label="Model and monitor details">
+        <article class="method-card"><div class="method-number">A / MODEL</div><h3>Empty means zero.</h3><p>Every run begins at the zero vector. A cyclic boundary operator composes into a stable Laplacian-style update, with the same seeded background forcing in both runs.</p></article>
+        <article class="method-card"><div class="method-number">B / MONITOR</div><h3>32 states. 32 channels.</h3><p>An explicit one-to-one index map; no silent truncation or averaging. Peak residual, antipodal consistency, and four FOLD8 continuity rings inspect the time-aligned residual.</p></article>
+        <article class="method-card"><div class="method-number">C / EVIDENCE</div><h3>Replay the evidence.</h3><p>Seeded runs reproduce exactly. Export the paired traces as CSV, or inspect the reproducible benchmark below for false alarms, detection rate, delay, and misses.</p></article>
+      </section>
+
+      <section class="benchmark" aria-labelledby="benchmark-title">
+        <div class="benchmark-head"><div><div class="eyebrow"><span>02</span> REPRODUCIBLE METRICS</div><h2 id="benchmark-title">Synthetic benchmark</h2></div><span class="synthetic-chip">SYNTHETIC</span></div>
+        <p class="benchmark-copy" id="benchmark-copy">Loading checked-in results…</p>
+        <div class="metrics-grid" id="metrics-grid" aria-live="polite"></div>
+        <details class="threshold-details"><summary>Thresholds &amp; baseline</summary><p>Monitor: peak residual &gt; 0.055; antipodal residual &gt; 0.045; FOLD8 residual &gt; 0.045. Simple baseline: global RMS residual &gt; 0.025. Equality is not an alarm. A false alarm is a flagged clean frame; detection rate is trial-level; delay is median steps after onset among detections; misses are disturbed trials with no post-onset alert.</p></details>
+      </section>
+
+      <aside class="scope-note"><strong>Scope note</strong><p>This is a software-only synthetic observatory. The abstract dynamics and OES-32-inspired consistency monitor describe this simulation only—not physical universe dynamics, cosmology, quantum coherence, or validated hardware behavior.</p></aside>
+    </main>
+
+    <footer>
+      <div class="footer-top"><span>EMPTY-STATE OBSERVATORY <span class="footer-separator">/</span> SYNTHETIC DATA ONLY</span><span>Maintained by Spark</span></div>
+      <div class="footer-bottom"><span>This program is provided without warranty.</span><span><a href="https://github.com/sparkainlp-x/empty-state-observatory">Source</a><a href="LICENSE">AGPL-3.0-only</a></span></div>
+    </footer>
+  </div>
+</body>
+</html>
