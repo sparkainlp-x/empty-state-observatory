@@ -18,6 +18,13 @@ test("the bundled browser metrics are byte-for-byte equivalent to the checked-in
   assert.equal(BENCHMARK.label, "SYNTHETIC");
 });
 
+test("replay restores the initial guess label as well as enabling both buttons", () => {
+  const app = readFileSync(new URL("../web/app.js", import.meta.url), "utf8");
+  const renderPair = app.slice(app.indexOf("function renderPair"), app.indexOf("\nfunction formatPercent"));
+  assert.match(renderPair, /\$\(`#guess-\$\{side\}`\)\.disabled = false;/);
+  assert.match(renderPair, /\$\(`#guess-\$\{side\}`\)\.textContent = "This run was disturbed →";/);
+});
+
 test("the browser model declares an explicit one-to-one 32-channel map", () => {
   assert.equal(STATE_COUNT, 32);
   assert.equal(CHANNEL_COUNT, 32);

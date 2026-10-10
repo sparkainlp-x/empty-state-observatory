@@ -70,6 +70,7 @@ function renderPair(pair) {
     $(`#run-${side}-card`).classList.remove("correct", "incorrect", "answered");
     $(`#run-${side}-status`).textContent = "AWAITING GUESS";
     $(`#guess-${side}`).disabled = false;
+    $(`#guess-${side}`).textContent = "This run was disturbed →";
   }
   for (const canvas of [$("#run-a-canvas"), $("#run-b-canvas")]) {
     canvas.setAttribute("aria-label", `Synthetic heatmap of Run ${canvas.id.includes("a-") ? "A" : "B"}, 32 channels over ${pair.cleanTrace.length - 1} simulation steps. Color shows signed state value.`);
