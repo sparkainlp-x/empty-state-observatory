@@ -1,8 +1,36 @@
 cff-version: 1.2.0
-message: "If you use this software, cite it as below."
-title: "Empty-State Observatory"
-version: 0.1.0
-date-released: 2026-10-10
-license: AGPL-3.0-only
+message: "If you use this software, please cite it using the metadata in this file."
+title: "Empty-State Observatory: browser guessing game and synthetic 32-state monitor benchmark"
+type: software
 authors:
-  - name: Spark
+  - family-names: Brisson
+    given-names: Jean-François
+    affiliation: "Spark AI NLP, Fredericton, New Brunswick, Canada"
+    orcid: "https://orcid.org/0009-0000-9778-5374"
+repository-code: "https://github.com/sparkainlp-x/empty-state-observatory"
+url: "https://sparkainlpx.xyz"
+abstract: >-
+  Empty-State Observatory is a browser-based, software-only guessing game and
+  reproducible synthetic benchmark. A visitor watches two seeded evolutions of
+  an abstract, initially empty 32-state ring, guesses which run received a
+  hidden synthetic disturbance, then reveals, replays or exports it. The ring
+  evolves by a stable explicit heat step on its graph Laplacian with seeded
+  forcing and noise. An OES-32-inspired consistency monitor checks peak,
+  antipodal and FOLD8 residuals against a time-aligned clean reference and is
+  benchmarked against a scalar RMS baseline for false alarms, detection rate,
+  delay and misses. Scope: all traces, disturbances, scores and benchmark
+  results are SYNTHETIC. It is not a model of physical universe dynamics,
+  cosmology, quantum coherence or hardware, and its thresholds are documented
+  design parameters, not calibrated limits.
+keywords:
+  - research software
+  - synthetic benchmark
+  - graph Laplacian
+  - anomaly detection
+  - educational game
+  - JavaScript
+  - Python
+  - New Brunswick
+license: AGPL-3.0-only
+version: "0.1.0"
+date-released: "2026-10-11"

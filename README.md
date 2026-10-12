@@ -61,4 +61,4 @@ python -m empty_state_observatory export --seed ESO-032 --out synthetic-run.csv
 
 This repository is an independent clean-room implementation; **no source code was copied** from either reference project. The idea-level references are [homological-cascade-engine](https://github.com/sparkainlp-x/homological-cascade-engine) (MIT) for boundary/Laplacian-inspired numerical evolution and [oes32_engine](https://github.com/sparkainlp-x/oes32_engine) (AGPL-3.0-only) for fixed-width consistency-checking inspiration. Their code and license notices are not bundled here. This combined OES-32-oriented software is licensed **AGPL-3.0-only**; see [LICENSE](LICENSE).
 
-The page provides a source link, license link, and no-warranty notice. Copyright: Spark.
+The page provides a source link, license link, and no-warranty notice. Copyright (C) 2026 Jean-François Brisson, Spark AI NLP.

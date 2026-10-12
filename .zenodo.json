@@ -1,0 +1,48 @@
+{
+  "upload_type": "software",
+  "title": "Empty-State Observatory: browser guessing game and synthetic 32-state monitor benchmark",
+  "version": "0.1.0",
+  "description": "<p>Empty-State Observatory is a browser-based, software-only guessing game and reproducible synthetic benchmark. A visitor watches two seeded evolutions of an abstract, initially empty 32-state ring, guesses which run received a hidden synthetic disturbance, then reveals, replays or exports it.</p><p>The ring evolves by a stable explicit heat step on its graph Laplacian with seeded forcing and noise. An OES-32-inspired consistency monitor checks peak, antipodal and FOLD8 residuals against a time-aligned clean reference and is benchmarked against a scalar RMS baseline for false alarms, detection rate, delay and misses.</p><p>Scope: all traces, disturbances, scores and benchmark results are SYNTHETIC. It is not a model of physical universe dynamics, cosmology, quantum coherence or hardware, and its thresholds are documented design parameters, not calibrated limits.</p><p>Python 3.12 and Node.js, no runtime third-party dependencies. pytest and Node tests run in GitHub Actions. License: AGPL-3.0-only.</p>",
+  "creators": [
+    {
+      "name": "Brisson, Jean-François",
+      "affiliation": "Spark AI NLP, Fredericton, New Brunswick, Canada",
+      "orcid": "0009-0000-9778-5374"
+    }
+  ],
+  "access_right": "open",
+  "license": "AGPL-3.0-only",
+  "language": "eng",
+  "keywords": [
+    "research software",
+    "synthetic benchmark",
+    "graph Laplacian",
+    "anomaly detection",
+    "educational game",
+    "JavaScript",
+    "Python",
+    "New Brunswick"
+  ],
+  "communities": [
+    {
+      "identifier": "spark-ai-nlp"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/sparkainlp-x/empty-state-observatory",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "10.5281/zenodo.23307846",
+      "relation": "references",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.22985523",
+      "relation": "references",
+      "scheme": "doi"
+    }
+  ]
+}
