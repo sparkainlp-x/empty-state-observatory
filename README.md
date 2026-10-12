@@ -1,5 +1,7 @@
 # Empty-State Observatory
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23308961.svg)](https://doi.org/10.5281/zenodo.23308961)
+
 A browser-based, software-only guessing game and reproducible synthetic benchmark. A visitor watches two seeded evolutions of an abstract, initially empty 32-state membrane, guesses which run received a hidden synthetic disturbance, then reveals the event and replays or exports the run.
 
 **All traces, disturbances, scores, and benchmark results are synthetic.** This is not a model of physical universe dynamics, cosmology, quantum coherence, or hardware; no physical or hardware validation is claimed.
@@ -62,3 +64,7 @@ python -m empty_state_observatory export --seed ESO-032 --out synthetic-run.csv
 This repository is an independent clean-room implementation; **no source code was copied** from either reference project. The idea-level references are [homological-cascade-engine](https://github.com/sparkainlp-x/homological-cascade-engine) (MIT) for boundary/Laplacian-inspired numerical evolution and [oes32_engine](https://github.com/sparkainlp-x/oes32_engine) (AGPL-3.0-only) for fixed-width consistency-checking inspiration. Their code and license notices are not bundled here. This combined OES-32-oriented software is licensed **AGPL-3.0-only**; see [LICENSE](LICENSE).
 
 The page provides a source link, license link, and no-warranty notice. Copyright (C) 2026 Jean-François Brisson, Spark AI NLP.
+
+## Cite
+
+Concept DOI (all versions): [10.5281/zenodo.23308961](https://doi.org/10.5281/zenodo.23308961). v0.1.0: [10.5281/zenodo.23308962](https://doi.org/10.5281/zenodo.23308962). See [CITATION.cff](CITATION.cff).
