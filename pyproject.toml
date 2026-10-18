@@ -20,7 +20,7 @@ classifiers = [
 dependencies = []
 
 [project.optional-dependencies]
-dev = ["pytest==8.4.2"]
+dev = ["pytest==9.0.3"]
 
 [project.scripts]
 empty-state-observatory = "empty_state_observatory.cli:main"
